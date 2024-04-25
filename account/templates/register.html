@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    {% load crispy_forms_tags %}
+</head>
+<body>
+    <h1>This is register page</h1>
+    <button><a href="{% url 'home' %}">home page</a></button>
+    <br>
+    <div  class="container pt-3 pb-3 bg-white">
+        <div class="row d-flex justify-content-center align-items-center mt-2">
+            <div class="col ">
+                <img   class="img-fluid" src="{% static 'reg.jpg' %}" alt="banar">
+              </div>
+              <div class="col">
+                <div style="width: 400px; margin: auto;">
+                    <form method="post" novalidate>
+                        {{form | crispy}}
+                        {% csrf_token %}
+                
+                        <!-- if unauthorize user try for login show a error message -->
+                        <!-- {% if form.non_field_errors %}
+                        {% for er in form.non_field_errors %}
+                            <p class="bg-danger text-white p-3">{{er}}</p>
+                        {% endfor %}
+                        {% endif %}
+                
+                
+                        {% for fm in form %}
+                        {{fm.label_tag}}
+                        {{fm}}
+                        {{fm.errors | striptags}}
+                      
+                        {% endfor %} -->
+                        <br>
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                    </form>
+                </div>
+                
+            
+              </div>
+        </div>
+        
+        
+    </div>
+</body>
+</html>
